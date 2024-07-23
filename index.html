@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC Agora | Consultando o dados via API</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <section class="container">
+      <div class="wrapper">
+        <h1>BTC Agora</h1>
+        <p>*Dados consultados pela API da <i>CoinDesk.</i></p>
+      </div>
+    </section>
+
+  </header>
+  <main>
+    <section class="container infos">
+      <div class="wrapper valores">
+        <h2>🪙 Selecione uma moeda</h2>
+        <h3><span id="valuePrice"></span></h3>
+        <div class="btnGroup">
+          <button id="btnUSD" class="btnValue active">USD</button>
+          <button id="btnGBP" class="btnValue">GBP</button>
+          <button id="btnEUR" class="btnValue">EUR</button>
+        </div>
+      </div>
+
+      <div class="wrapper data">
+        <h2>🕒 Selecione um fuso horário</h2>
+        <h3><span id="valueDate"></span></h3>
+        <div class="btnGroup">
+          <button id="btnBRT" class="btnDate active">São Paulo</button>
+          <button id="btnUTC" class="btnDate">UTC</button>
+          <button id="btnJST" class="btnDate">Tóquio</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/scripts/script.js"></script>
+</body>
+
+</html>

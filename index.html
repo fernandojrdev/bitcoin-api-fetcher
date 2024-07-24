@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BTC Agora | Consultando o dados via API</title>
-
+  <title>BTC Now</title>
   <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -14,16 +13,15 @@
   <header>
     <section class="container">
       <div class="wrapper">
-        <h1>BTC Agora</h1>
-        <p>*Dados consultados pela API da <i>CoinDesk.</i></p>
+        <h1>BTC Now</h1>
+        <p>*Data retrieved from the <i>CoinDesk API.</i></p>
       </div>
     </section>
-
   </header>
   <main>
     <section class="container infos">
-      <div class="wrapper valores">
-        <h2>🪙 Selecione uma moeda</h2>
+      <div class="wrapper prices">
+        <h2>🪙 Select a currency</h2>
         <h3><span id="valuePrice"></span></h3>
         <div class="btnGroup">
           <button id="btnUSD" class="btnValue active">USD</button>
@@ -31,26 +29,23 @@
           <button id="btnEUR" class="btnValue">EUR</button>
         </div>
       </div>
-
-      <div class="wrapper data">
-        <h2>🕒 Selecione um fuso horário</h2>
+      <div class="wrapper dates">
+        <h2>🕒 Select a time zone</h2>
         <h3><span id="valueDate"></span></h3>
         <div class="btnGroup">
           <button id="btnBRT" class="btnDate active">São Paulo</button>
           <button id="btnUTC" class="btnDate">UTC</button>
-          <button id="btnJST" class="btnDate">Tóquio</button>
+          <button id="btnJST" class="btnDate">Tokyo</button>
         </div>
       </div>
     </section>
   </main>
-
   <footer>
     <div class="wrapper">
-      Feito por <a href="https://www.linkedin.com/in/feferjr/" target="_blank" rel="noopener noreferrer">Fernando
+      Made by <a href="https://www.linkedin.com/in/feferjr/" target="_blank" rel="noopener noreferrer">Fernando
         Jr.</a>
     </div>
   </footer>
-
   <script src="assets/scripts/script.js"></script>
 </body>
 

@@ -5,7 +5,7 @@ Fetches data from the CoinDesk API for Bitcoin information and displays it in a 
 
 ## Functionalities
 
-- Value in USD, GBP, and EUR
+- Price in USD, GBP, and EUR
 - Date and time of the last update
 - Three different time zones
 

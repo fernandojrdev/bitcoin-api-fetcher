@@ -1,6 +1,6 @@
-# API Fetching | Bitcoin - CoinDesk
+# API Fetching | Bitcoin - CoinGecko
 
-Fetches data from the CoinDesk API for Bitcoin information and displays it in a simple and straightforward interface.
+Fetches data from the CoinGecko API for Bitcoin information and displays it in a simple and straightforward interface.
 
 
 ## Functionalities

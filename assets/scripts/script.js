@@ -2,54 +2,55 @@ let currentTimezone = 'America/Sao_Paulo';
 let currentValue = 'USD';
 
 async function fetchData() {
-    const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Erro na requisição: ' + response.statusText);
-        }
-        const data = await response.json();
-        // Valor
-        const valueUSD = parseFloat(data.bpi.USD.rate.replace(',', '')).toFixed(2);
-        const valueGBP = parseFloat(data.bpi.GBP.rate.replace(',', '')).toFixed(2);
-        const valueEUR = parseFloat(data.bpi.EUR.rate.replace(',', '')).toFixed(2);
+  const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,eur,gbp&include_last_updated_at=true';
 
-        let value;
-        switch (currentValue) {
-            case 'USD':
-                value = "💵 $" + valueUSD;
-                break;
-            case 'GBP':
-                value = "💷 £" + valueGBP;
-                break;
-            case 'EUR':
-                value = "💶 €" + valueEUR;
-                break;
-            default:
-                value = "💵 $" + valueUSD;
-                break;
-        }
-        document.getElementById('valuePrice').textContent = `${value}`;
-        // Data
-        const dateString = data.time.updatedISO;
-        const date = new Date(dateString);
-        const dateOptions = {
-            timeZone: currentTimezone,
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        };
-        const formatter = new Intl.DateTimeFormat('pt-BR', dateOptions);
-        const formattedDate = formatter.format(date);
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Erro na requisição: ' + response.statusText);
 
-        document.getElementById('valueDate').textContent = `${formattedDate}`;
+    const data = await response.json();
 
-    } catch (error) {
-        console.error('Erro:', error);
+    // Valor
+    const valueUSD = Number(data.bitcoin.usd).toFixed(2);
+    const valueGBP = Number(data.bitcoin.gbp).toFixed(2);
+    const valueEUR = Number(data.bitcoin.eur).toFixed(2);
+
+    let value;
+    switch (currentValue) {
+      case 'USD':
+        value = "$ " + valueUSD;
+        break;
+      case 'GBP':
+        value = "£ " + valueGBP;
+        break;
+      case 'EUR':
+        value = "€ " + valueEUR;
+        break;
+      default:
+        value = "$ " + valueUSD;
+        break;
     }
+    document.getElementById('valuePrice').textContent = value;
+
+    // Data (CoinGecko gives a unix timestamp in seconds)
+    const lastUpdatedAtSeconds = data.bitcoin.last_updated_at;
+    const date = new Date(lastUpdatedAtSeconds * 1000);
+
+    const dateOptions = {
+      timeZone: currentTimezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    };
+
+    const formatter = new Intl.DateTimeFormat('pt-BR', dateOptions);
+    document.getElementById('valueDate').textContent = formatter.format(date);
+  } catch (error) {
+    console.error('Erro:', error);
+  }
 }
 
 function setValue(value) {
